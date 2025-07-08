@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 ]
 
 GRAPHENE = {
-    'SCHEMA': 'alx_backend_graphql_crm.schema.schema'  # path to your schema object
+    "SCHEMA": "alx_backend_graphql_crm.schema.schema"  # <- path to schema.py
 }
 
 MIDDLEWARE = [

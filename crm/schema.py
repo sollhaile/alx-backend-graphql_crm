@@ -3,6 +3,10 @@ from graphene import Field, List, String, Float, Int, ID, Mutation, InputObjectT
 from graphene_django.types import DjangoObjectType
 from .models import Customer, Product, Order
 from django.utils import timezone
+from graphene_django.filter import DjangoFilterConnectionField
+from .filters import CustomerFilter, ProductFilter, OrderFilter
+from .models import Customer, Product, Order
+from graphene import ObjectType
 from django.db import IntegrityError
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 import re

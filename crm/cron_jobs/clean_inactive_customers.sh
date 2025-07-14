@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Get current directory of the script
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+# Get current working directory (cwd)
+cwd="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Path to manage.py relative to script
-PROJECT_ROOT="${SCRIPT_DIR}/../.."
+# Path to project root (2 levels up)
+project_root="${cwd}/../.."
 
 # Run Django shell cleanup command
 deleted_count=$(
-  python3 "${PROJECT_ROOT}/manage.py" shell -c "
+  python3 "${project_root}/manage.py" shell -c "
 from datetime import timedelta
 from django.utils import timezone
 from crm.models import Customer

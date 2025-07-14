@@ -52,6 +52,18 @@ CRONJOBS = [
 GRAPHENE = {
     "SCHEMA": "alx_backend_graphql_crm.schema.schema"  # <- path to schema.py
 }
+# Celery configuration
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+
+# Celery Beat config
+from celery.schedules import crontab
+
+CELERY_BEAT_SCHEDULE = {
+    'generate-crm-report': {
+        'task': 'crm.tasks.generate_crm_report',
+        'schedule': crontab(day_of_week='mon', hour=6, minute=0),
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

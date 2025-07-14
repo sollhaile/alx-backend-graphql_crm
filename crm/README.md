@@ -1,7 +1,8 @@
 # CRM Celery Report Task Setup
 
-## 1. Install Dependencies
+## 1. Install Redis and Requirements
 
 ```bash
-pip install -r requirements.txt
+sudo apt update
 sudo apt install redis-server
+pip install -r requirements.txt

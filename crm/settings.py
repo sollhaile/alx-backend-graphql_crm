@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'graphene_django',
     'crm',  # your app
     'django_crontab',
+    'django_celery_beat',
 
 ]
 CRONJOBS = [

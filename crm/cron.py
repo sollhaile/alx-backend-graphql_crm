@@ -1,6 +1,8 @@
 import datetime
 from gql import gql, Client
 from gql.transport.requests import RequestsHTTPTransport
+from django.utils import timezone
+from .models import Product
 
 def log_crm_heartbeat():
     timestamp = datetime.datetime.now().strftime("%d/%m/%Y-%H:%M:%S")
@@ -49,3 +51,14 @@ def update_low_stock():
 
     except Exception as e:
         print(f"Error updating low stock: {e}")
+def updatelowstock():
+    products = Product.objects.filter(stock__lt=10)
+    updated = []
+
+    for product in products:
+        product.stock += 10
+        product.save()
+        updated.append(product)
+
+    with open('/tmp/lowstockupdates_log.txt', 'a') as log:
+        log.write(f"{timezone.now()} - Restocked {len(updated)} products\n")
